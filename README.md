@@ -31,9 +31,9 @@ jobs:
 
       # Here you can insert custom steps you need
       - name: Install dependencies
-        run: dart pub get
+        run: flutter pub get
       - name: Publish
-        run: dart pub publish --force
+        run: flutter pub publish --force
 ```
 
 ## License
