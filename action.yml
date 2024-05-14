@@ -1,0 +1,8 @@
+name: "Setup Pub.dev credentials"
+description: "Configuring credentials for automated publishing of packages to pub.dev"
+runs:
+  using: "composite"
+  steps:
+    - name: Setup Pub.dev credentials
+      run: $GITHUB_ACTION_PATH/action.sh
+      shell: bash

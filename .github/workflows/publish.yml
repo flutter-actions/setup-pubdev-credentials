@@ -1,0 +1,16 @@
+name: publish
+
+on:
+  push:
+
+jobs:
+  # https://dart.dev/tools/pub/automated-publishing
+  publish:
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: flutter-actions/setup-flutter@v3
+      - uses: ./
