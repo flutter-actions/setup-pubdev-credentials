@@ -11,17 +11,19 @@ if [ ! "$(command -v dart)" ] && [ ! "$(command -v flutter)" ]; then
     exit 1
 fi
 
-log_group_start() {
-    echo "::group::${1}"
-}
-log_group_end() {
-    echo "::endgroup::"
-}
-
-echo "Create the OIDC token used for pub.dev publishing..."
 INPUT_GITHUB_OIDC_AUDIENCE="https://pub.dev"
+
+# Request the GitHub OIDC token
 GITHUB_OIDC_RESPONSE=$(curl -s -H "Authorization: bearer $ACTIONS_ID_TOKEN_REQUEST_TOKEN" "$ACTIONS_ID_TOKEN_REQUEST_URL&audience=${INPUT_GITHUB_OIDC_AUDIENCE}")
+if [[ $? -ne 0 ]]; then
+    echo "::error::Failed to request the GitHub OIDC token,"
+    exit 1
+fi
+
+# Extract the GitHub OIDC token
 GITHUB_OIDC_IDTOKEN=$(jq -r '.value' <<< "${GITHUB_OIDC_RESPONSE}")
+
+# Set PUB_TOKEN environment variable
 export PUB_TOKEN=${GITHUB_OIDC_IDTOKEN}
 echo "PUB_TOKEN=${GITHUB_OIDC_IDTOKEN}" >> $GITHUB_ENV
 echo "The Dart CLI successfully authenticated with the GitHub OIDC token,"
