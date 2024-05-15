@@ -30,9 +30,11 @@ jobs:
       - uses: flutter-actions/setup-flutter@v3
       - uses: flutter-actions/setup-pubdev-credentials@v1
 
-      # Here you can insert custom steps you need
       - name: Install dependencies
         run: flutter pub get
+      # Here you can insert custom steps you need
+      # - name: Build
+      #   run: flutter build ...
       - name: Publish
         run: flutter pub publish --force
 ```
