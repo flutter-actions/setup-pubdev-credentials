@@ -1,5 +1,9 @@
 name: "Setup Pub.dev credentials"
 description: "Configuring credentials for automated publishing of packages to pub.dev"
+author: "Flutter Actions"
+branding:
+  icon: "unlock"
+  color: "blue"
 runs:
   using: "composite"
   steps:
