@@ -2,6 +2,7 @@ name: publish
 
 on:
   push:
+  workflow_dispatch:
 
 jobs:
   # https://dart.dev/tools/pub/automated-publishing
