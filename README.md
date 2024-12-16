@@ -27,7 +27,7 @@ jobs:
       - uses: actions/checkout@v4
 
       # Setup Flutter SDK and automated pub.dev credentials
-      - uses: flutter-actions/setup-flutter@v3
+      - uses: flutter-actions/setup-flutter@v4
       - uses: flutter-actions/setup-pubdev-credentials@v1
 
       - name: Install dependencies
